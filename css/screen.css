@@ -34,6 +34,9 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  background-color: var(--global-color-back);
+  color: var(--global-color-front);
 }
 
 *,
@@ -43,6 +46,11 @@ html {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* margin: 0; */
 }
 
 /*
@@ -128,20 +136,70 @@ body {
 #COMPONENTS
 \*------------------------------------*/
 
+.c-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 /*
     Component: Robot
 */
 
 .c-robot {
+  --c-robot-animation-duration: 0.75s;
+  --c-robot-animation-timing-function: ease-in-out;
+  --c-robot-animation-iteration-count: infinite;
+  --c-robot-animation-direction: alternate;
+  fill: var(--global-color-front);
+  max-width: 300px;
+  max-height: 300px;
+  margin-bottom: 1rem;
 }
 
+
 .c-robot__shadow {
+  fill: black;
+  fill-opacity: 0.1;
 }
 
 
 /*
     Component: Controls
 */
+
+#Shadow {
+  transform-origin: 50% 100%;
+  animation-name: shadowPulse;
+  animation-duration: var(--c-robot-animation-duration);
+  animation-timing-function: var(--c-robot-animation-timing-function);
+  animation-iteration-count: var(--c-robot-animation-iteration-count);
+  animation-direction: var(--c-robot-animation-direction);
+}
+
+#Robot {
+  animation-name: robotHover;
+  animation-duration: var(--c-robot-animation-duration);
+  animation-timing-function: var(--c-robot-animation-timing-function);
+  animation-iteration-count: var(--c-robot-animation-iteration-count);
+  animation-direction: var(--c-robot-animation-direction);
+}
+
+@keyframes shadowPulse {
+  100% {
+    transform: scale(0.75);
+  }
+}
+
+@keyframes robotHover {
+  0% {
+    transform: translateY(2.5%);
+  }
+  100% {
+    transform: translateY(-2.5%);
+  }
+}
 
 /*------------------------------------*\
 #UTILITIES
